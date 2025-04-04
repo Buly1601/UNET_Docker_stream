@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .color-container {
+            margin-top: 20px;
+            display: flex; 
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .color-box {
+            width: 80px; 
+            height: 80px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .prediction-text {
+            font-size: 1.2rem;
+            margin-top: 15px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="containers">
+        <h1>Upload an image</h1>
+
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if filename %}
+        <h2>Uploaded image</h2>
+        <img src="{{ url_for("static", filename="uploads/" + filename) }}">
+        
+        {% if food %}
+        <h2>Prediction</h2>
+        <h3> {{ food }}</h3>
+
+        {% endif %}
+        {% endif %}
+
+
+
+    </div>
+
+</body>
+</html>
